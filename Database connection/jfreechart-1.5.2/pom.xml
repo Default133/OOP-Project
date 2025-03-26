@@ -266,3 +266,8 @@
         </profile>
     </profiles>
 </project>
+<dependency>
+<groupId>org.mariadb.jdbc</groupId>
+<artifactId>mariadb-java-client</artifactId>
+<version>3.2.0</version>  <!-- Use the latest version -->
+</dependency>
