@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `Courses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Courses` (
-  `course_id` int(11) NOT NULL AUTO_INCREMENT,
-  `course_name` varchar(255) NOT NULL,
+  `courseId` int(11) NOT NULL AUTO_INCREMENT,
+  `courseName` varchar(255) NOT NULL,
   `credits` int(11) NOT NULL,
   `instructor` varchar(255) NOT NULL,
-  PRIMARY KEY (`course_id`)
+  PRIMARY KEY (`courseId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,15 +52,15 @@ DROP TABLE IF EXISTS `Enrollments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Enrollments` (
-  `enrollment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `student_id` int(11) NOT NULL,
-  `course_id` int(11) NOT NULL,
+  `enrollmentID` int(11) NOT NULL AUTO_INCREMENT,
+  `studentID` int(11) NOT NULL,
+  `courseId` int(11) NOT NULL,
   `grade` varchar(2) DEFAULT NULL,
-  PRIMARY KEY (`enrollment_id`),
-  KEY `student_id` (`student_id`),
-  KEY `course_id` (`course_id`),
-  CONSTRAINT `Enrollments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `Students` (`student_id`),
-  CONSTRAINT `Enrollments_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `Courses` (`course_id`)
+  PRIMARY KEY (`enrollmentID`),
+  KEY `student_id` (`studentID`),
+  KEY `course_id` (`courseId`),
+  CONSTRAINT `Enrollments_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `Students` (`studentID`),
+  CONSTRAINT `Enrollments_ibfk_2` FOREIGN KEY (`courseId`) REFERENCES `Courses` (`courseId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,10 +86,10 @@ DROP TABLE IF EXISTS `Students`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Students` (
-  `student_id` int(11) NOT NULL AUTO_INCREMENT,
-  `stud_name` varchar(255) NOT NULL,
+  `studentID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`student_id`),
+  PRIMARY KEY (`studentID`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
