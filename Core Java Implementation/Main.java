@@ -1,9 +1,8 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class Main {
+class Main {
     public static void main(String[] args) throws SQLException {
-        // Test Database Connection
         Connection conn = DatabaseConnector.connect();
         if (conn != null) {
             System.out.println("Database connected successfully!");
@@ -11,15 +10,19 @@ public class Main {
             System.out.println("Failed to connect to the database.");
         }
 
-        // Test CRUD Operations
         StudentDAO studentDAO = new StudentDAO();
         CourseDAO courseDAO = new CourseDAO();
         EnrollmentDAO enrollmentDAO = new EnrollmentDAO();
 
         // Add Students
-        studentDAO.addStudent("John Doe", "johndoe@example.com");
-        studentDAO.addStudent("Jane Smith", "janesmith@example.com");
+        studentDAO.addStudent("Jens Annan", "jensAnnan@gmail.com");
+        studentDAO.addStudent("Cole Maina", "coleMaina@gmail.com");
 
+        // Display Data
+        System.out.println("\n--- Students ---");
+        for (Student student : studentDAO.listStudents()) {
+            System.out.println(student);
+        }
         // Add Courses
         courseDAO.addCourse("Software Engineering", 3, "Dr. Emily");
         courseDAO.addCourse("Networking", 3, "Dr. Alan");
@@ -39,4 +42,6 @@ public class Main {
         System.out.println("\n--- Enrollments ---");
         enrollmentDAO.listEnrollments();
     }
+
 }
+
